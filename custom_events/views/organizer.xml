@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="orgainzer_view_form" model="ir.ui.view">
+        <field name="name">orgainzer.form</field>
+        <field name="model">organizer</field>
+        <field name="arch" type="xml">
+            <form >
+                <header> 
+                    <field name="card_state" widget="statusbar" options="{'clickable': '1'}"/>
+                  </header>
+                <sheet >
+                    <div style="margin-top: 30px; background-color: #D5D5E7;padding: 10px;border-radius: 5px;">
+                        <h2>Organizer</h2>
+                        <div class="container">
+                            <group >
+                                <group>
+                                    <field name="last_name" placeholder="Last Name" />
+                                    <field name="first_name" placeholder="First Name" />
+                                    <field name="phone" placeholder="00967775435987"/>
+                                </group>
+                                <group>
+                                    <field name="mail" placeholder="example@mail.com"/>
+                                    <field name="gender" widget="radio" class="oe_edit_only" options="{'horizontal': true}"/>
+                                    <field name="event_id" class="oe_inline" />
+                                </group>
+                            </group>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="orgainzer_view_tree" model="ir.ui.view">
+        <field name="name">orgainzer.tree</field>
+        <field name="model">organizer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="last_name"/>
+                <field name="first_name"/>
+                <field name="phone" />
+                <field name="mail" />
+                <field name="card_state" widget='badge'/>
+            </tree>
+        </field>
+    </record>
+    <record id="organizer_view_kanban" model="ir.ui.view">
+        <field name="name">Organizer Kanban</field>
+        <field name="model">organizer</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="card_state">
+                <field name="last_name"/>
+                <field name="first_name"/>
+                <field name="phone" />
+                <field name="mail" />
+              <field name="card_state" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="oe_kanban_card">
+                                    <div class="o_kanban_image" >
+                                      <img t-att-src="kanban_image('product.template','image_small')"/>
+                                  
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-user"/>
+                                        <b>
+                                            <field name="last_name"/>
+                                        </b>
+                                    </div>
+                                    <div class="text-muted">
+                                        <i class="fa fa-book"/>
+                                        <field name="first_name"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+      </record>
+    <record  model="ir.actions.act_window" id="organizer_list_action">
+        <field name="name">Organizer</field>
+        <field name="res_model">organizer</field>
+        <field name = "view_mode">kanban,tree,form</field>
+        <field name = "help" type="html">
+            <p class = "o_view_nocontent_smiling_face">Create the first Organizer</p>
+        </field>
+    </record>
+    <menuitem id="main_cust_events_menu" name="Custom Events" />
+    <menuitem id="cust_events_menu" name="Reporing"  parent="main_cust_events_menu" sequence="1" />
+    <menuitem id="Organizer_menu" name="Organizer"  parent="cust_events_menu" action = "organizer_list_action"/>
+</odoo>

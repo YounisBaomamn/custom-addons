@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+care_card_manager,care card manager,model_care_card,card_manager,1,1,1,1
+request,request,model_card_request,card_requester,1,1,1,1
+update_request,update request,model_update_request,card_requester,1,1,1,1
+card_read_only_,card read only,model_care_card,card_requester,1,0,0,0

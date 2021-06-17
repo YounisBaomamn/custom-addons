@@ -1,0 +1,8 @@
+<odoo>
+
+  <template id="assets_website_links" inherit_id="website.assets_frontend">
+    <xpath expr="." position="inside">
+        <link rel="stylesheet" type="text/css" href="/openacademy/static/src/css/styel.css"/>
+    </xpath>
+  </template>
+</odoo> 

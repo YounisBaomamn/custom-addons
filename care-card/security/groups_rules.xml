@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+  <data>
+    
+    <record id="requester_card_update_requests" model="ir.rule">
+      <field name="name">Requester Card Update Requests</field>
+      <field name="model_id" ref="model_update_request"/>
+      <field name="domain_force">[('create_uid', '=', user.id)]</field>
+      <field name="groups" eval="[(4, ref('card_requester'))]"/>
+      <field name="perm_read" eval="True"/>
+      <field name="perm_write" eval="True"/>
+      <field name="perm_create" eval="False"/>
+      <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="requester_view_cards" model="ir.rule">
+      <field name="name">Requester View Cards</field>
+      <field name="model_id" ref="model_care_card"/>
+      <field name="domain_force">[('beneficiary.id', '=', user.partner_id.id)]</field>
+      <field name="groups" eval="[(4, ref('card_requester'))]"/>
+      <field name="perm_read" eval="True"/>
+      <field name="perm_write" eval="False"/>
+      <field name="perm_create" eval="False"/>
+      <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="requester_change_card_requests" model="ir.rule">
+      <field name="name">Requester Change Card Requests</field>
+      <field name="model_id" ref="model_card_request"/>
+      <field name="domain_force">[('create_uid', '=', user.id)]</field>
+      <field name="groups" eval="[(4, ref('card_requester'))]"/>
+      <field name="perm_read" eval="True"/>
+      <field name="perm_write" eval="True"/>
+      <field name="perm_create" eval="False"/>
+      <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="manager_change_all_update_requests" model="ir.rule">
+      <field name="name">Manager change all update requests</field>
+      <field name="model_id" ref="model_update_request"/>
+      <field name="domain_force">[(1, '=', 1)]</field>
+      <field name="groups" eval="[(4, ref('card_manager'))]"/>
+      <field name="perm_read" eval="True"/>
+      <field name="perm_write" eval="True"/>
+      <field name="perm_create" eval="False"/>
+      <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="manager_change_all_create_requests" model="ir.rule">
+      <field name="name">Manager change all create requests</field>
+      <field name="model_id" ref="model_card_request"/>
+      <field name="domain_force">[(1, '=', 1)]</field>
+      <field name="groups" eval="[(4, ref('card_manager'))]"/>
+      <field name="perm_read" eval="True"/>
+      <field name="perm_write" eval="True"/>
+      <field name="perm_create" eval="False"/>
+      <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="manager_view_all_cards" model="ir.rule">
+      <field name="name">manager his cards</field>
+      <field name="model_id" ref="model_care_card"/>
+      <field name="domain_force">[(1, '=', 1)]</field>
+      <field name="groups" eval="[(4, ref('card_manager'))]"/>
+      <field name="perm_read" eval="True"/>
+      <field name="perm_write" eval="False"/>
+      <field name="perm_create" eval="False"/>
+      <field name="perm_unlink" eval="False"/>
+    </record>
+    
+  </data>
+</odoo>

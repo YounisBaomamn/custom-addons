@@ -1,0 +1,9 @@
+.div_header {
+    margin-top: 20px;
+    background-color: #ced4da;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline;
+    font-weight: 800;
+    color: #515170;
+}

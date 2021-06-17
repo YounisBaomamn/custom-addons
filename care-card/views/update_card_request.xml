@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="card_update_request_view_form" model="ir.ui.view">
+      <field name="name">card_update_request.form</field>
+      <field name="model">update_request</field>
+      <field name="arch" type="xml">
+        <form >
+          <header>
+            <field name="request_status" widget="statusbar"/>
+            <button name="make_approved_it" string="Approve" type="object"  class="btn btn-success" attrs="{'invisible': [('request_status', '!=', 'pending')]}"/>
+            <button name="make_rejected_it" string="Reject" type="object"  class="btn btn-danger" attrs="{'invisible': [('request_status', '!=', 'pending')]}"/>
+          </header>
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                <field name="request_number" readonly="1"/>
+              </h1>
+            </div>
+            <group>
+              <field name="card_number"/>
+              <field name="request_type" readonly="1"/>
+              <field name="request_data" readonly="1"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+  </record>
+    
+  <record id="card_update_request_view_tree" model="ir.ui.view">
+    <field name="name">card_update_request.view.tree</field>
+    <field name="model">update_request</field>
+    <field name="arch" type="xml">
+      <tree>
+          <field name="request_number"/>
+          <field name="card_number"/>
+          <field name="request_type" />
+          <field name="request_status" widget="badge"  decoration-success="request_status == 'approved'"  decoration-danger="request_status == 'rejected'" decoration-warning="request_status == 'pending'"/>
+          <button name="make_approved_it"  string="Approve" type="object"  class="btn btn-success" attrs="{'invisible': [('request_status', '!=', 'pending')]}"/>
+          <button name="make_rejected_it" string="Reject" type="object"  class="btn btn-danger" attrs="{'invisible': [('request_status', '!=', 'pending')]}"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="update_request_view_kanban" model="ir.ui.view">
+    <field name="name">Rent Kanban</field>
+    <field name="model">update_request</field>
+    <field name="arch" type="xml">
+      <kanban default_group_by="request_status">
+        <field name="card_number"/>
+        <field name="request_status" />
+        <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_global_click">
+                <div class="oe_kanban_content">
+                  <div class="oe_kanban_card">
+                    <div class="o_kanban_image" >
+                      <img t-att-src="kanban_image('product.template','image_small')"/>
+                    </div>
+                    <div>
+                      <i class="fa fa-user-circle"/>
+                      <b>
+                        <field name="card_number" />
+                      </b>
+                    </div>
+                    <div class="text-muted">
+                        <i class="fa fa-calendar"/>
+                        <field name="request_data" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+
+  <record  model="ir.actions.act_window" id="update_list_action">
+      <field name="name">Update Card Request</field>
+      <field name="res_model">update_request</field>
+      <field name = "help" type="html">
+          <p class = "o_view_nocontent_smiling_face">Create the Update Card Request</p>
+      </field>
+      <field name = "view_mode">kanban,tree,form</field>
+  </record>
+  
+    <menuitem id="update_card_menu" name="Update Card Request"  parent="menu_request_card_menu" action = "update_list_action"/>
+
+</odoo>

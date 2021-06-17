@@ -1,0 +1,12 @@
+.tiel_h {
+    background-color: #c9f1d8f6;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    color: #202020;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+}
