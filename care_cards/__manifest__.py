@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Academy",
+    'name': "Care Card",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+       Create a care card for the beneficiary
+       """,
 
     'description': """
         Long description of module's purpose
     """,
 
-    'author': "My Company",
+    'author': "Younis Bamoman",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
@@ -24,15 +24,25 @@
 
     # always loaded
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
-        'views/templates.xml',
-        'views/websut_view.xml',
-        'views/views.xml',
-        'data/data.xml'
+        'security/groups_rules.xml',
+        'data/Sequence_nmber.xml',
+        'data/data_cron.xml',
+        'views/template_static.xml',
+        'views/care_card.xml',
+        'views/update_card_request.xml',
+        'views/card_request.xml',
+        'views/card_requests_template.xml',
+        'views/sending_request_email_template.xml',
+        'data/websiti.xml',
         
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
 }
