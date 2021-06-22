@@ -1,10 +1,33 @@
 
 <odoo>
-    <template id="assets_frontend" inherit_id="website.assets_frontend">
-        <xpath expr="." position="inside">
-            <link rel="stylesheet" type="text/scss" href="/academy/static/src/css/style.css"/>
-        </xpath>
-    </template>
-
-   
+    <data>
+    	<record id="website_menu_academy" model="website.menu">
+        	<field name="name">Academy</field>
+        	<field name="url">/academyss/new</field>
+        	<field name="parent_id" ref="website.main_menu"/>
+        	<field name="sequence" type="int">49</field>
+    	</record>
+        <template id="assets_website_linksss" inherit_id="website.assets_frontend">
+            <xpath expr="//link[last()]" position="after">
+                <link rel="stylesheet" type="text/css" href="/academy/static/src/css/mdb.min.css"/>
+            </xpath>
+          </template>
+          <template id="assets_animate_linksss" inherit_id="website.assets_frontend">
+            <xpath expr="//link[last()]" position="after">
+                <link
+                rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+            </xpath>
+          </template>
+          <template id="assets_animate_linksss" inherit_id="website.assets_frontend">
+            <xpath expr="//link[last()]" position="after">
+                <link rel="stylesheet" href="/academy/static/src/css/style.css" />
+            </xpath>
+          </template>
+         
+          <template id="portal_input_check" inherit_id="website.assets_frontend" name="Custom Website Assets">
+            <xpath expr="//link[last()]" position="after">
+                <script type="text/javascript" src="/academy/static/src/js/mdb.min.js"></script>
+            </xpath>
+        </template>
+   </data>
 </odoo>

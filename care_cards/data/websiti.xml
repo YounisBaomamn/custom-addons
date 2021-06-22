@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    	<record id="website_card_request" model="website.menu">
+        	<field name="name">Create Request</field>
+        	<field name="url">/cards_requests/new</field>
+        	<field name="parent_id" ref="website.main_menu"/>
+        	<field name="sequence" type="int">51</field>
+    	</record>
+    </data>
+
+</odoo>
