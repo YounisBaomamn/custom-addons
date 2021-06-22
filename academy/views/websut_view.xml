@@ -1,16 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
+	
+    <template id="academy_template">
+        <t t-call="website.layout">
+			<br />
+			<br />
+			<div class="container">
+				<form action="/create_cards/create" method="POST">
+					
+					<div class="form-group">
+						<input type="text" class="form-control" required="1" name="name" placeholder="Full name" t-att-value="name">
+						</input>
+					</div>
+					<div class="form-check">
+						<button type="submit" class="btn btn-primary" >Submit</button>
+					</div>
+				</form>
+			</div>
+		</t>
+    </template>
+    
+    <record id="patient_thanks" model="website.page">
+        <field name="name">Thanks</field>
+        <field name="url">/patient_thanks-you</field>
+        <field name="type">qweb</field>
+        <field name="key">academy.patient_thanks</field>
+        <field name="website_published">True</field>
+        <field name="arch" type="xml">
+            <t name='Thanks' t-name='academy.patient_thanks'>
+                <t  t-call="website.layout">
+                    <h3>Younis Bamoman</h3>
+                </t>
+            </t>
 
-    <template id="index">
+        </field>
+        
+        
+    </record>
+    
+    <!-- <template id="index">
    
         <t t-call="website.layout">
             
             <t t-set="title">Academy</t>
-            <!-- <header id="top" data-anchor="ture" data-name="Header" class="o_header_standard">
-
-            </header>
-             -->
+            
             <div class="oe_structure">
                
                 <div class="container">
@@ -25,8 +59,8 @@
                 </div>
             </div>
         </t>
-    </template>
-    <template id="biography">
+    </template> -->
+    <!-- <template id="biography">
     
       <t t-call="website.layout">
           <t t-set="title">Academy</t>
@@ -42,6 +76,6 @@
           <div class="oe_structure"/>
       </t>
     </template>
-      
+       -->
 
 </odoo>
