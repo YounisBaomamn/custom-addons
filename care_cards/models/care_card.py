@@ -2,22 +2,23 @@
 
 from odoo import models, fields, api
 class CareCard(models.Model):
-    _name = 'care_card'
+    _name = 'card'
     _description = 'Care Card'
     _rec_name = 'card_number'
 
     card_number = fields.Char('Card Number', required=True, copy=False, readonly=True,  default=lambda self: ('New'))
     beneficiary = fields.Many2one('res.partner', default=lambda self:self.env.user.partner_id.id)
-    expired_date= fields.Date("Expired Date")
+    name = fields.Char('Full Name',)
+    expired_date= fields.Date("Expired Date",default=fields.Date.context_today)
     card_date = fields.Date('Card Issue Date', default=fields.Date.today)
     note = fields.Text()
     status = fields.Selection([('activated','Activated'),('expired', 'Expired'),('canceled','Canceled')], 'State', default='activated') 
     company_currency = fields.Many2one("res.currency", string='Currency', default=2, )
     card_balance = fields.Monetary('Card Balance', digits =(7,2), currency_field='company_currency', tracking=True, default="1")
     
-    def check_expiry(self):
-        today = field.Date.today()
-        expiry = self.env['care_card'].search([])
+    def _date_expiry(self):
+        today = fields.Date.today()
+        expiry = self.env['card'].search([])
         for order in expiry:
             if order.status == 'activated' and order.expired_date < today:
                 order.status = 'expired'
@@ -32,3 +33,4 @@ class CareCard(models.Model):
  
     def canceled_it(self):
         self.status = 'canceled'
+         

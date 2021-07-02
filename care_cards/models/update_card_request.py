@@ -5,7 +5,7 @@ class UpdateCardRequest(models.Model):
     _name = 'update_request'
     _rec_name = 'request_number'
     
-    card_number = fields.Many2one('care_card',string= 'Card Number')
+    card_number = fields.Many2one('card',string= 'Card Number')
     request_number =fields.Char(string='Request Number', required=True, copy=False, readonly=True, default=lambda self: ('New'))
     request_data = fields.Date( string='Request Data', default=fields.Date.today)
     request_status = fields.Selection([('pending', 'Pending'), ('approved', 'Approved'), ('rejected', 'Rejected')], 'State',default='pending')

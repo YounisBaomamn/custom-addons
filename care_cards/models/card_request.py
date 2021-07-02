@@ -25,7 +25,7 @@ class CardRequest(models.Model):
         self.card_number.create(
             [
                 {
-                'beneficiary': self.create_uid.partner_id.id,
+                'name': self.name,
                 'card_balance': self.card_balance,
                 'note': self.note,
                 'card_date': self.request_data,

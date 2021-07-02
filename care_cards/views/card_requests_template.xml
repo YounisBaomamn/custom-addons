@@ -39,6 +39,32 @@
             </div>
         </t>
     </template>
+
+    <template id="show_my_care" >
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="rew">
+                    <h3>My Care Card</h3>
+                    <div class="d-flex justify-content-center align-content-center flex-wrap">
+                        <t t-foreach="value" t-as="variable">
+                            <div class="card text-center" style="width: 18rem;">
+                                <div class="card-header"><i class="fa fa-user-circle"/>  <t t-esc="variable.name"/></div>
+                                <div class="card-body">
+                                    <h6 class="card-text"><i class="fa fa-credit-card"/> <t t-esc="variable.card_number"/></h6>
+                                    <h6 class="card-text"><i class="fa fa-calendar"/> <t t-esc="variable.card_date"/></h6>
+                                    <h6 class="card-text"><i class="fa fa-money"/> <t t-esc="variable.card_balance"/> </h6>
+                                        <h6 class="card-text"><t t-esc="variable.status"/> </h6>
+                                    <a href="#" class="btn btn-primary">Update Care Card Request</a>
+                                </div>
+                                <div class="card-footer text-muted"><i class="fa fa-calendar-times-o"/> <t t-esc="variable.expired_date"/></div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div> 
+        </t>
+    </template>
+
     <record id="patient_thanks" model="website.page">
         <field name="name">Thanks</field>
         <field name="url">/patient_thanks-you</field>
@@ -59,4 +85,10 @@
             </t>
         </field>  
     </record>
+    <template id="my_account_linksws" name="frontend portal" inherit_id="portal.user_dropdown">
+        <xpath expr="//*[@id='o_logout_divider']" position="before">
+            <a href="/create_cards/show" role="menuitem" class="dropdown-item">My Care Card</a>
+        </xpath>
+    </template>
+
 </odoo>

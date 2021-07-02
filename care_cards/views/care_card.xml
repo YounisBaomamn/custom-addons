@@ -2,7 +2,7 @@
 
   <record id="care_card_view_form" model="ir.ui.view">
     <field name="name">Care Card.form</field>
-    <field name="model">care_card</field>
+    <field name="model">card</field>
     <field name="arch" type="xml">
       <form>
         <header> 
@@ -34,7 +34,7 @@
   </record>
   <record id="care_card_view_tree" model="ir.ui.view">
     <field name="name">Care Card.tree</field>
-    <field name="model">care_card</field>
+    <field name="model">card</field>
     <field name="arch" type="xml">
       <tree>
         <field name="beneficiary" />
@@ -50,10 +50,10 @@
 
   <record id="care_card_view_kanban" model="ir.ui.view">
     <field name="name">Care Card Kanban</field>
-    <field name="model">care_card</field>
+    <field name="model">card</field>
     <field name="arch" type="xml">
       <kanban default_group_by="status">
-        <field name="beneficiary" />
+        <field name="name" />
         <field name="card_number" />
         <field name="company_currency" invisible='1' />
         <field name="card_balance" />
@@ -70,7 +70,7 @@
                             <div>
                                 <i class="fa fa-user-circle"/>
                                 <b>
-                                  <field name="beneficiary" />
+                                  <field name="name" />
                                 </b>
                             </div>
                             <div class="text-muted">
@@ -95,7 +95,7 @@
   </record>
   <record  model="ir.actions.act_window" id="care_card_list_action">
     <field name="name">Care Card</field>
-    <field name="res_model">care_card</field>
+    <field name="res_model">card</field>
     <field name = "help" type="html">
       <p class = "o_view_nocontent_smiling_face">Create the first Care Card</p>
     </field>

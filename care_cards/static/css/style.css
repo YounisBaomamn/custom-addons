@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .form {
     margin: 30px;
     padding: 10px;
@@ -6,8 +11,18 @@
 .h3 {
     margin-top: 20px;
     display: inline-block;
-    text-align: center;
     background-color: #3aada9a3;
     padding: 10px;
     border-radius: 5px;
+}
+
+.card {
+    display: inline-block;
+    margin-left: 13px;
+    margin-bottom: 10px;
+}
+
+.rew {
+    background-color: #efefefa3;
+    padding: 10px;
 }
