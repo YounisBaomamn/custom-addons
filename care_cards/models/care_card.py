@@ -8,13 +8,14 @@ class CareCard(models.Model):
 
     card_number = fields.Char('Card Number', required=True, copy=False, readonly=True,  default=lambda self: ('New'))
     beneficiary = fields.Many2one('res.partner', default=lambda self:self.env.user.partner_id.id)
+    # beneficiary = fields.Char()
     name = fields.Char('Full Name',)
     expired_date= fields.Date("Expired Date",default=fields.Date.context_today)
     card_date = fields.Date('Card Issue Date', default=fields.Date.today)
     note = fields.Text()
     status = fields.Selection([('activated','Activated'),('expired', 'Expired'),('canceled','Canceled')], 'State', default='activated') 
     company_currency = fields.Many2one("res.currency", string='Currency', default=2, )
-    card_balance = fields.Monetary('Card Balance', digits =(7,2), currency_field='company_currency', tracking=True, default="1")
+    card_balance = fields.Monetary('Card Balance', digits =(7,2), currency_field='company_currency', tracking=True, default="100")
     
     def _date_expiry(self):
         today = fields.Date.today()

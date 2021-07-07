@@ -19,7 +19,7 @@
           <group name="sale_header">
             <group>
               <field name="beneficiary" />
-              <field name="expired_date" />
+              <field name="expired_date" readonly="1" />
               <field name="card_date"  attrs="{'readonly': [('card_date','!=', False)]}" />
             </group>
             <group>

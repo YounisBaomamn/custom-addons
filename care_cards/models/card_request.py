@@ -7,11 +7,12 @@ class CardRequest(models.Model):
     _name = 'card_request'
     _description = 'Card Create Request'
     
+    # beneficiary = fields.Many2one('res.users', default=lambda self: self.env.user)
     name = fields.Char('Full Name')
     email = fields.Char('Email',required=True)
     phone = fields.Char( )
     company_currency = fields.Many2one("res.currency", string='Currency', default=2)
-    card_balance = fields.Monetary('Card Balance', digits =(7,2), currency_field='company_currency', tracking=True, default="1")
+    card_balance = fields.Monetary('Card Balance', digits =(7,2), currency_field='company_currency', tracking=True, default="100")
     note = fields.Text( )
 
     @api.model
@@ -25,6 +26,7 @@ class CardRequest(models.Model):
         self.card_number.create(
             [
                 {
+                'beneficiary': self.create_uid.partner_id.id,
                 'name': self.name,
                 'card_balance': self.card_balance,
                 'note': self.note,

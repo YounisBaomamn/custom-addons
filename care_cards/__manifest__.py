@@ -33,7 +33,9 @@
         'views/care_card.xml',
         'views/update_card_request.xml',
         'views/card_request.xml',
-        'views/card_requests_template.xml',
+        'views/create_care_template.xml',
+        'views/card_info_template.xml',
+        'views/update_card_request_template.xml',
         'views/sending_request_email_template.xml',
         'data/websiti.xml',
         

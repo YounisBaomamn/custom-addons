@@ -8,7 +8,7 @@ class UpdateCardRequest(models.Model):
     card_number = fields.Many2one('card',string= 'Card Number')
     request_number =fields.Char(string='Request Number', required=True, copy=False, readonly=True, default=lambda self: ('New'))
     request_data = fields.Date( string='Request Data', default=fields.Date.today)
-    request_status = fields.Selection([('pending', 'Pending'), ('approved', 'Approved'), ('rejected', 'Rejected')], 'State',default='pending')
+    request_status = fields.Selection([('pending', 'Pending'), ('approved', 'Approved'), ('rejected', 'Rejected')],default='pending')
     request_type = fields.Selection([('activated','Activated'),('canceled','Canceled')], tring='Request Type', compute='_compute_request_type', store=True)
     document_ids = fields.Many2many('ir.attachment', string="Documents")
     

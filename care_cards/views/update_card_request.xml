@@ -48,6 +48,7 @@
       <kanban default_group_by="request_status">
         <field name="card_number"/>
         <field name="request_status" />
+       
         <templates>
             <t t-name="kanban-box">
               <div class="oe_kanban_global_click">
@@ -57,9 +58,9 @@
                       <img t-att-src="kanban_image('product.template','image_small')"/>
                     </div>
                     <div>
-                      <i class="fa fa-user-circle"/>
+                      <i class="fa fa-credit-card"/>
                       <b>
-                        <field name="card_number" />
+                        <field name="card_number"/>
                       </b>
                     </div>
                     <div class="text-muted">

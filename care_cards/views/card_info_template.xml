@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <template id="show_my_care" >
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="rew">
+                    <div class="d-flex justify-content-center align-content-center flex-wrap">
+                       <div class="card text-center" style="width: 18rem;">
+                                <div class="card-header"><i class="fa fa-user-circle"/>  <t t-esc="name"/></div>
+                                <div class="card-body">
+                                    <h6 class="card-text"><i class="fa fa-credit-card"/> <t t-esc="card_number" /></h6>
+                                    <h6 class="card-text"><i class="fa fa-calendar"/> <t t-esc="card_date"/></h6>
+                                    <h6 class="card-text"><i class="fa fa-money"/> <t t-esc="card_balance"/> </h6>
+                                    <h6 t-if="status == 'activated'" class="card-text" role="alert"><i class="fa fa-check" /> <t  t-esc="status"/> </h6>
+                                    <h6 t-if="status == 'canceled'" class="card-text" role="alert"><i class="fa fa-times" /> <t  t-esc="status"/> </h6>
+                                    <a href="/card_update_request/create" class="btn btn-secondary">Update Care Card Request</a>
+                                </div>
+                                <div class="card-footer text-muted"><i class="fa fa-calendar-times-o"/> <t t-esc="expired_date"/></div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </t>
+    </template>
+
+    <template id="my_account_linksws" name="frontend portal" inherit_id="portal.user_dropdown">
+        <xpath expr="//*[@id='o_logout_divider']" position="before">
+            <a href="/create_cards/show" role="menuitem" class="dropdown-item">My Care Card</a>
+        </xpath>
+    </template>
+
+</odoo>

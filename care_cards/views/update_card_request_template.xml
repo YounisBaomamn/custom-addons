@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="update_request_template" >
+      <t t-call="website.layout">
+          <div class="container">
+               <div class="rew">
+                  <div class="d-flex justify-content-center align-content-center flex-wrap">
+                      <div class="card text-center" style="width: 18rem;">
+                            <div class="card-header"><i class="fa fa-user-circle"/>  <t t-esc="name"/></div>
+                            <div class="card-body">
+                                <h6 class="card-text"><i class="fa fa-credit-card"/> <t t-esc="request_number" /></h6>
+                                <h6 class="card-text"><i class="fa fa-calendar"/> <t t-esc="request_data"/></h6>
+                                <h6 class="card-text" t-if="request_type == 'activated'"  role="alert" ><i class="fa fa-check"/> <t t-esc="request_type"/> </h6>
+                                <h6 class="card-text" t-if="request_type == 'canceled'"  role="alert" ><i class="fa fa-times"/> <t t-esc="request_type"/> </h6>
+                            </div>
+                            <div class="card-footer text-muted"><i class="fa fa-spinner"/> <t t-esc="request_status"/></div>
+                      </div>
+                   </div>
+               </div>
+          </div> 
+      </t>
+   </template>
+</odoo>

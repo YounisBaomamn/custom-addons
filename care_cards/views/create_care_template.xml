@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="create_care_web">
+        <t t-call="website.layout">
+            <div class="form_cont my-5" onsubmit="return validate();">
+                <div class="container">
+                    <div class="rew">
+                        <div class="col-md-12">
+                            <form class="form" action="/create_cards/create" method="POST">
+                                <div id="error" class="div_error"></div>
+                                
+                                <div class="form-outline mb-4">
+                                    
+                                    <input type="text" id="name" class="form-control" name="name" t-att-value="name" required="1"/>
+                                    <label class="form-label" for="name">Full Name</label>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="email" required="1" id="email" class="form-control" name="email" t-att-value="email"   />
+                                    <label class="form-label" for="email">Email Address</label>
+                                </div>
+                                <div class="form-outline mb-4">
+                                <input type="phone" id="phone" class="form-control" name="phone"  t-att-value="phone" />
+                                <label class="form-label" for="phone">Phone</label>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <input type="phone" id="number" class="form-control" name="card_balance"  t-att-value="card_balance" />
+                                    <label class="form-label" for="phone">Card Balance</label>
+                                </div>
+                                <div class="form-outline mb-4">
+                                <textarea class="form-control" id="note" rows="4" name="note" t-att-value="note" ></textarea>
+                                <label class="form-label" for="note">Note</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

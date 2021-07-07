@@ -4,7 +4,7 @@ function validate() {
     var phone = document.getElementById("phone").value;
     var messagee = document.getElementById("error");
 
-    messagee.style.backgroundColor = '#6c757d';
+    messagee.style.backgroundColor = '#c';
     messagee.style.textAlign = 'center';
     messagee.style.padding = '10px';
     messagee.style.color = '#fff'
